@@ -39,8 +39,14 @@ select_index <- function(string){
   return(list_index)
 }
 
-example <- read.table("day1/example.txt")
-input <- read.table("day1/input1.txt")
+# Example 1
+example <- read.table("day1/input/example.txt")
+new <- remove_letters(string = example)
+new <- select_index(string = new)
+sum(unlist(new)) # [1] 55123
+
+## Input 1
+input <- read.table("day1/input/input1.txt")
 new <- remove_letters(string = input)
 new <- select_index(string = new)
 sum(unlist(new)) # [1] 55123
@@ -85,7 +91,7 @@ transform_letter_to_number <- function(string){
   return(list_transformed)
 }
 
-input <- read.table("day1/example2.txt")
+input <- read.table("day1/input/example2.txt")
 input
 input <- transform_letter_to_number(string = input)
 new <- remove_letters(string = input)
