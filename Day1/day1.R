@@ -43,7 +43,7 @@ select_index <- function(string){
 example <- read.table("day1/input/example.txt")
 new <- remove_letters(string = example)
 new <- select_index(string = new)
-sum(unlist(new)) # [1] 55123
+sum(unlist(new)) # [1] 142
 
 ## Input 1
 input <- read.table("day1/input/input1.txt")
