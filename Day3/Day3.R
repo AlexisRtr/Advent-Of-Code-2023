@@ -1,11 +1,7 @@
-
-
+library(dplyr)
+library(tidyr)
 
 ### INPUT 1
-# Example 1
-example1 <- read.table("day3/input/example1.txt")
-df <- example1 %>% separate(V1, names_col, sep = "")
-df <- df %>% replace(is.na(.), ".")
 
 ## GET ALL THE SYMBOLS
 get_symbols <- function(dataset){
@@ -20,11 +16,6 @@ get_symbols <- function(dataset){
   
   return(symbols)
 }
-
-symbols <- get_symbols(dataset = example1)
-
-
-
 
 check_around <- function(dataset,position_x, position_y){
   
@@ -128,24 +119,38 @@ check_around(dataset = df, position_x = 10, position_y = 10)
 check_around(dataset = df, position_x = 1, position_y = 1)
 
 
-row <- 1
+
+# Example 1
+example1 <- read.table("day3/input/example1.txt")
+names_col <- c("1","2","3","4","5", "6", "7","8", "9","10")
+df <- example1 %>% separate(V1, names_col, sep = "")
+df <- df %>% replace(is.na(.), ".")
+
+symbols <- get_symbols(dataset = example1)
+
+x <- 1
 for (i in example1){
   print("NEW ROW")
   i <- strsplit(i, NULL)[[1]]
   
-  col <- 1
+  y <- 1
   for (r in i){
     print(r)
     
     is_digit <- grepl("^\\d+$", r)
     if(is_digit){
       print(r)
-      
+      print("IS DIGIT")
+      symbol_around <- check_around(dataset = df, position_x = x, position_y = y) #RIGHT
+      print(symbol_around)
+      if (symbol_around == TRUE){
+        print(symbol_around)
+      }
       
     }
     
     
-    col <- col+1
+    y <- y+1
   }
 }
 

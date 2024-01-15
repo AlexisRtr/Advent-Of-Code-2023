@@ -137,6 +137,7 @@ check_win <- function(dataset_winning, dataset_played) {
   return(df)
 }
 
+
 example1 <- read.table("day4/input/example1.txt")
 example1
 df <- processing(dataset = example1)
